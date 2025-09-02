@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { FaFacebook, FaLinkedin ,FaShareAlt, FaInstagram , FaWhatsapp, FaInfoCircle} from "react-icons/fa";
 const bhakt = {
   Bhaktamar_Stotra: [
     {
@@ -343,7 +343,11 @@ const bhakt = {
 
 const App = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
 
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
   const goToPrevSlide = () => {
     setActiveIndex((prevIndex) =>
       prevIndex === 0 ? bhakt.Bhaktamar_Stotra.length - 1 : prevIndex - 1
@@ -361,7 +365,11 @@ const App = () => {
   };
 
   return (
-    <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 font-sans">
+    <div className="bg-gray-900 min-h-screen flex flex-col items-center justify-center  font-sans">
+      <div className="text-3xl text-golden text-shadow-golden-glow p-3">
+        {" "}
+        || काकागंज के आदिबाबा की जय ||
+      </div>
       <div className="w-full max-w-4xl mx-auto relative rounded-3xl overflow-hidden shadow-2xl">
         <div
           className="flex transition-transform duration-700 ease-in-out"
@@ -429,11 +437,12 @@ const App = () => {
           </svg>
         </button>
       </div>
-
-      <div className="flex flex-col items-center justify-center p-4 mt-8">
+      <div className="flex items-center justify-center mt-3">
         <p className="text-white text-sm sm:text-base mb-2">
           Page {activeIndex + 1} of {bhakt.Bhaktamar_Stotra.length}
         </p>
+      </div>
+      <div className="flex items-center justify-center p-3 ">
         <div className="flex flex-wrap justify-center gap-2 max-w-xl md:max-w-2xl overflow-y-auto max-h-15 p-2 rounded-lg bg-gray-800 bg-opacity-50">
           {bhakt.Bhaktamar_Stotra.map((_, index) => (
             <button
@@ -451,6 +460,46 @@ const App = () => {
               {index + 1}
             </button>
           ))}
+        </div>
+        <div className={`social-bubble-container ${isExpanded ? "expanded" : ""}`}>
+          <button className="bubble-button" onClick={toggleExpand}>
+            <FaInfoCircle className="main-icon" />
+          </button>
+
+          <div className="social-links-wrapper">
+            <a
+              href="https://www.facebook.com/anujjainj2/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <FaFacebook className="social-icon" />
+            </a>
+            <a
+              href="http://wa.me/+918821017898"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <FaWhatsapp className="social-icon" />
+            </a>
+            <a
+              href="https://www.instagram.com/l_anuj_jain_l/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <FaInstagram className="social-icon" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/anujjainj2/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <FaLinkedin className="social-icon" />
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -14,3 +14,81 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Container for the whole component */
+.social-bubble-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* The main clickable bubble button */
+.bubble-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.bubble-button:hover {
+  background-color: #0056b3;
+}
+
+.main-icon {
+  font-size: 24px;
+}
+
+/* Wrapper for the social links */
+.social-links-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+  max-height: 0; /* Initially hide the links */
+  overflow: hidden;
+  opacity: 0; /* Hide them initially */
+  transform: translateY(10px); /* Move them down slightly */
+  transition: max-height 0.4s ease-in-out, opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* State when the bubble is expanded */
+.social-bubble-container.expanded .social-links-wrapper {
+  max-height: 300px; /* An arbitrary height large enough to show all links */
+  opacity: 1; /* Make them visible */
+  transform: translateY(0); /* Move them to their final position */
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-link:hover {
+  transform: scale(1.1);
+  background-color: #e9ecef;
+}
+
+.social-icon {
+  font-size: 20px;
+}
